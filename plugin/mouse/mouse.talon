@@ -27,7 +27,9 @@ mid click:
 #option = alt
 #shift
 #super = windows key
-<user.modifiers> click:
+click:
+        mouse_click(0)
+<user.modifiers> touch:
     key("{modifiers}:down")
     mouse_click(0)
     key("{modifiers}:up")
