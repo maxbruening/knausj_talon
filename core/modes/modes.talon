@@ -10,3 +10,9 @@ not mode: sleep
     mode.disable("sleep")
     mode.disable("dictation")
     mode.enable("command")
+^dictate$:
+    mode.disable("sleep")
+    mode.disable("command")
+    mode.enable("dictation")
+    user.code_clear_language_mode()
+    mode.disable("user.gdb")
