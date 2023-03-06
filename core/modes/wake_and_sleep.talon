@@ -1,7 +1,7 @@
 #defines the commands that sleep/wake Talon
 mode: all
 -
-^welcome back$:
+^(welcome back)+$:
     user.mouse_wake()
     user.history_enable()
     user.talon_mode()
@@ -14,6 +14,7 @@ mode: all
     speech.disable()
     user.engine_sleep()
 ^talon sleep [<phrase>]$: speech.disable()
+<<<<<<< HEAD
 ^talon wake$: speech.enable()
 
 
@@ -28,3 +29,6 @@ mode: all
     user.mouse_sleep()
     speech.disable()
     user.engine_sleep()
+=======
+^(talon wake)+$: speech.enable()
+>>>>>>> upstream/main
