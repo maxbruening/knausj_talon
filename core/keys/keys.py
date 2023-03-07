@@ -153,7 +153,7 @@ punctuation_words = {
     "full stop": ".",
     "semicolon": ";",
     "colon": ":",
-    "forward slash": "/",
+    "slash": "/",
     "question mark": "?",
     "exclamation mark": "!",
     "exclamation point": "!",
@@ -167,6 +167,7 @@ punctuation_words = {
     # Currencies
     "dollar sign": "$",
     "pound sign": "£",
+    "euro sign": "€",
     "hyphen": "-",
     "L paren": "(",
     "left paren": "(",
@@ -224,6 +225,7 @@ symbol_key_words = {
     # Currencies
     "dollar": "$",
     "pound": "£",
+    "euro": "€" ,
 }
 
 # make punctuation words also included in {user.symbol_keys}
