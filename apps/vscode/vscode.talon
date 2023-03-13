@@ -11,6 +11,8 @@ window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
 #multiple_cursor.py support end
 
+search it: key(ctrl-shift-F)
+
 please [<user.text>]:
     user.vscode("workbench.action.showCommands")
     insert(user.text or "")
