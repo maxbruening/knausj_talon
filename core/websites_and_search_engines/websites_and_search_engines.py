@@ -32,7 +32,7 @@ website_defaults = {
 }
 
 _search_engine_defaults = {
-    "amazon": "https://www.amazon.com/s/?field-keywords=%s",
+    "amazon": "https://www.amazon.de/s/?field-keywords=%s",
     "google": "https://www.google.com/search?q=%s",
     "map": "https://maps.google.com/maps?q=%s",
     "scholar": "https://scholar.google.com/scholar?q=%s",
