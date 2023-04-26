@@ -55,7 +55,7 @@ settings():
     # copying surrounding text before inserting. This can be slow and may not
     # work in some applications. You may wish to enable this on a
     # per-application basis.
-    user.context_sensitive_dictation = 1
+    # user.context_sensitive_dictation = 1
 
     # How to resize windows moved across physical screens (eg. via `snap next`).
     # Default is 'proportional', which preserves window size : screen size ratio.
