@@ -142,8 +142,8 @@ go edit: user.vscode("workbench.action.navigateToLastEditLocation")
 # close tabs way left: user.vscode("workbench.action.closeEditorsToTheLeft")
 
 # Folding
-fold that: user.vscode("editor.fold")
-unfold that: user.vscode("editor.unfold")
+fold this: user.vscode("editor.fold")
+unfold this: user.vscode("editor.unfold")
 fold those: user.vscode("editor.foldAllMarkerRegions")
 unfold those: user.vscode("editor.unfoldRecursively")
 fold all: user.vscode("editor.foldAll")

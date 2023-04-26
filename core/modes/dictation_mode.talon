@@ -62,7 +62,7 @@ clear right <number_small> (character | characters):
 
 # Formatting
 formatted <user.format_text>: user.dictation_insert_raw(format_text)
-^format selection <user.formatters>$: user.formatters_reformat_selection(formatters)
+^format this <user.formatters>$: user.formatters_reformat_selection(formatters)
 
 # Corrections
 nope that | scratch that: user.clear_last_phrase()
