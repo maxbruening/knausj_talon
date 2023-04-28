@@ -3,9 +3,8 @@ import talon
 if hasattr(talon, "test_mode"):
     # Only include this when we're running tests
 
+    from knausj_talon_pkg.core.text import formatters
     from talon import actions
-
-    from core.text import formatters
 
     def setup_function():
         actions.reset_test_actions()

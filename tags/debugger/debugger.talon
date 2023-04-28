@@ -1,4 +1,4 @@
-tag: user.debugger
+tag: debugger
 -
 
 # Code execution

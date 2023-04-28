@@ -1,30 +1,13 @@
-from talon import Context, Module, actions
+from talon import Context, actions
 
-mod = Module()
-mod.tag("gdb", "Tag to enabled gdb-related functionality")
+ctx = Context()
 
-# user.gdb-specific context
-ctx_gdb_enabled = Context()
-ctx_gdb_enabled.matches = r"""
-tag: user.gdb
+ctx.matches = r"""
+mode: user.gdb
 """
 
-# global context for enabling and disabling user.gdb tag
-ctx_global = Context()
 
-
-@mod.action_class
-class Actions:
-    def gdb_enable():
-        """Enables the gdb tag"""
-        ctx_global.tags = ["user.gdb"]
-
-    def gdb_disable():
-        """Disables the gdb tag"""
-        ctx_global.tags = []
-
-
-@ctx_gdb_enabled.action_class("user")
+@ctx.action_class("user")
 class UserActions:
     ##
     # Generic debugger actions
