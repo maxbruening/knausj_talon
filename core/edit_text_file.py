@@ -14,6 +14,7 @@ mod.list("talon_settings_csv", desc="Absolute paths to talon user settings csv f
 _csvs = {
     name: os.path.join(SETTINGS_DIR, file_name)
     for name, file_name in {
+        "misrecognitions": "misrecognitions.csv",  
         "file extensions": "file_extensions.csv",
         "search engines": "search_engines.csv",
         "system paths": "system_paths.csv",
