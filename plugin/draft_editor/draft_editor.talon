@@ -2,7 +2,7 @@ user.draft_editor_running: True
 not tag: user.draft_editor_app_focused
 -
 
-draft: user.draft_editor_open()
+draft [here]: user.draft_editor_open()
 
 draft all:
     edit.select_all()
