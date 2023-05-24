@@ -138,7 +138,11 @@ class EditActions:
 
     def paste():
         actions.key("ctrl-v")
-        # action(paste_match_style):
+        
+    def paste_match_style():
+        actions.key("ctrl-alt-v")
+        actions.key("up")
+        actions.key("enter")
 
     def print():
         actions.key("ctrl-p")
