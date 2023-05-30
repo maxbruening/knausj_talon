@@ -1,4 +1,5 @@
-mode: all
+mode: command
+mode: dictation
 -
 
 phones <user.homophones_canonical>: user.homophones_show(homophones_canonical)
