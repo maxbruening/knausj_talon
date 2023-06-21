@@ -19,4 +19,5 @@ not mode: sleep
 ^mixed mode$:
         mode.disable("sleep")
         mode.enable("dictation")
-        mode.enable("command")    
+        mode.enable("command")
+        user.code_clear_language_mode()    

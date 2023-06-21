@@ -19,12 +19,14 @@ mode: all
 ^jolt$:
     user.mouse_wake()
     user.talon_mode()
+    mode.enable("noise")
 
 ^drowse$:
     user.switcher_hide_running()
     user.homophones_hide()
     user.help_hide()
     user.mouse_sleep()
+    mode.disable("noise")
     speech.disable()
     user.engine_sleep()
 # ^(talon wake)+$: speech.enable()
