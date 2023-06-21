@@ -17,6 +17,7 @@ _csvs = {
         "abbreviations": "abbreviations.csv",
         "additional words": "additional_words.csv",
         "alphabet": "alphabet.csv",
+        "directories": "directories.csv",
         "file extensions": "file_extensions.csv",
         "misrecognitions": "misrecognitions.csv",
         "search engines": "search_engines.csv",
