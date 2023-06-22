@@ -176,7 +176,7 @@ abbreviations = {
     "position independent code": "pic",
     "position independent executable": "pie",
     "previous": "prev",
-    ."private": "priv",
+    "private": "priv",
     "process": "proc",
     "processor": "cpu",
     "program": "prog",
