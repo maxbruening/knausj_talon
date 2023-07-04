@@ -1,8 +1,8 @@
 experiment: anchor-file
 mode: dictation
 -
-press <user.modifiers>: key(modifiers)
-press <user.keys>: key(keys)
+press <user.modifiers> [over]: key(modifiers)
+press <user.keys> [over]: key(keys)
 
 # Everything here should call `user.dictation_insert()` instead of `insert()`, to correctly auto-capitalize/auto-space.
 <user.raw_prose>: user.dictation_insert(raw_prose)
