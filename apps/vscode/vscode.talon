@@ -106,6 +106,7 @@ references find: user.vscode("references-view.find")
 file format: user.vscode("editor.action.formatDocument")
 file format save:
      user.vscode("editor.action.formatDocument")
+     sleep(1s)
      edit.save()
 format this: user.vscode("editor.action.formatSelection")
 imports fix: user.vscode("editor.action.organizeImports")
