@@ -20,6 +20,7 @@ mode: all
     user.mouse_wake()
     user.talon_mode()
     mode.enable("noise")
+    user.fix_volume()
 
 ^drowse$:
     user.switcher_hide_running()
