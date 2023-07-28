@@ -145,6 +145,7 @@ punctuation_words = {
     "comma": ",",
     # Workaround for issue with conformer b-series; see #946
     "coma": ",",
+    "kama": ",",
     #"period": ".",
     "full stop": ".",
     "semicolon": ";",
