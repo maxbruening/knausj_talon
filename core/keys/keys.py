@@ -258,6 +258,7 @@ alternate_keys = {
     "delete": "delete",
     "page up": "pageup",
     "page down": "pagedown",
+    "void": "space",
 }
 # mac apparently doesn't have the menu key.
 if app.platform in ("windows", "linux"):
