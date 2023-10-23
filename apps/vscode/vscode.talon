@@ -1,6 +1,11 @@
 #custom vscode commands go here
 app: vscode
 -
+
+settings():
+    key_wait = 4
+    insert_wait = 7
+    
 tag(): user.find_and_replace
 tag(): user.line_commands
 tag(): user.multiple_cursors
