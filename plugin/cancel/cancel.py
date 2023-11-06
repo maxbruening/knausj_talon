@@ -14,7 +14,7 @@ def pre_phrase(d):
             return
         # cancel the command
         d["parsed"]._sequence = []
-        actions.app.notify(f"Command canceled: {' '.join(before)!r}")
-
+        # actions.app.notify(f"Command canceled: {' '.join(before)!r}")
+        actions.user.hud_add_log('event', f"Command canceled: {' '.join(before)!r}")
 
 speech_system.register("pre:phrase", pre_phrase)
