@@ -7,8 +7,8 @@ phrase <user.text> over:
     insert(text)
 {user.prose_formatter} <user.prose>$: user.insert_formatted(prose, prose_formatter)
 {user.prose_formatter} <user.prose> over: user.insert_formatted(prose, prose_formatter)
-<user.format_text>+$: user.insert_many(format_text_list)
-<user.format_text>+ over: user.insert_many(format_text_list)
+<user.format_code>+$: user.insert_many(format_code_list)
+<user.format_code>+ over: user.insert_many(format_code_list)
 <user.formatters> that: user.formatters_reformat_selection(user.formatters)
 ^format [this] <user.formatters>$: user.formatters_reformat_selection(formatters)
 word <user.word>:

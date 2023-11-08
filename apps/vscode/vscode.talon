@@ -9,7 +9,6 @@ settings():
 tag(): user.find_and_replace
 tag(): user.line_commands
 tag(): user.multiple_cursors
-tag(): user.snippets
 tag(): user.splits
 tag(): user.tabs
 window reload: user.vscode("workbench.action.reloadWindow")
@@ -190,7 +189,7 @@ git merge: user.vscode("git.merge")
 git output: user.vscode("git.showOutput")
 git pull: user.vscode("git.pullRebase")
 git push: user.vscode("git.push")
-git push focus: user.vscode("git.pushForce")
+git push force: user.vscode("git.pushForce")
 git rebase abort: user.vscode("git.rebaseAbort")
 git reveal: user.vscode("git.revealInExplorer")
 git revert: user.vscode("git.revertChange")
