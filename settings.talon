@@ -1,4 +1,5 @@
 -
+-
 settings():
     # Adjust the scale of the imgui to my liking
     imgui.scale = 1.3
@@ -25,7 +26,7 @@ settings():
     user.mouse_enable_pop_click = 2
 
     # Enable if you like to use the hissing noise to do mouse scroll
-    user.mouse_enable_hiss_scroll = 0
+    user.mouse_enable_hiss_scroll = 1
 
     # When enabled, the 'Scroll Mouse' GUI will not be shown.
     user.mouse_hide_mouse_gui = 0
@@ -51,7 +52,7 @@ settings():
 
     # Uncomment the below to insert text longer than 10 characters (customizable) by
     # pasting from the clipboard. This is often faster than typing.
-    #user.paste_to_insert_threshold = 10
+    user.paste_to_insert_threshold = 10
 
     # Uncomment the below to enable context-sensitive dictation. This determines
     # how to format (capitalize, space) dictation-mode speech by selecting &
@@ -64,7 +65,7 @@ settings():
     # Default is 'proportional', which preserves window size : screen size ratio.
     # 'size aware' keeps absolute window size the same, except full-height or
     # -width windows are resized to stay full-height/width.
-    #user.window_snap_screen = "size aware"
+    # user.window_snap_screen = "size aware"
 
 # Uncomment this to enable the curse yes/curse no commands (show hide mouse cursor). See issue #688.
 tag(): user.mouse_cursor_commands_enable
