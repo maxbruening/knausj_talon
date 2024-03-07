@@ -39,7 +39,7 @@ settings():
 
 ^jolt$:
     user.mouse_wake()
-    user.history_enable()
+    # user.history_enable()
     user.talon_mode()
     mode.enable("noise")
     user.fix_volume()
