@@ -1,6 +1,6 @@
 #defines modes specific to Dragon.
 speech.engine: dragon
-mode: all
+not mode: user.dragon_external
 -
 # wakes Dragon on Mac, deactivates talon speech commands
 dragon mode: user.dragon_mode()
