@@ -11,6 +11,7 @@ class UserActions:
     def code_block():
         actions.auto_insert("\n")
 
+    # 
     def code_state_if():
         actions.insert("if  {")
         actions.key("enter tab enter left")
@@ -57,7 +58,19 @@ class UserActions:
        actions.auto_insert("* ") 
        # actions.auto_insert("// ") 
 
+    # functions.py
+    def code_private_function(text: str):
+        result = "program {} \n\nend".format(
+            actions.user.formatted_text(
+                text, settings.get("user.code_private_function_formatter")
+            )
+        )
+        actions.user.paste(result)
+        actions.edit.up()
+        actions.key("tab")
 
+    def code_default_function(text: str):
+        actions.user.code_private_function(text)
 
     
 
