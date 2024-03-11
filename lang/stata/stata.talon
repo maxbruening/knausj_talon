@@ -6,6 +6,7 @@ tag(): user.code_comment_block_c_like
 tag(): user.code_comment_block
 tag(): user.code_comment_line
 tag(): user.code_functions
+tag(): user.code_functions_common
 
 settings():
     user.code_private_function_formatter = "SNAKE_CASE"

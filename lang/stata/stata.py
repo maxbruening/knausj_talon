@@ -6,11 +6,28 @@ ctx.matches = r"""
 code.language: stata
 """
 
+# functions.py
 ctx.lists["user.code_parameter_name"] = {
     # regressions
-    "v c e robust": "vce(robust)",
     "v c e cluster": "vce(cluster)",
+    "v c e robust": "vce(robust)",
 }
+
+# functions_common.py
+ctx.lists["user.code_common_function"] = {
+    # base stata
+    "global": "global",
+    "local": "local",
+    "reg": "reg",
+    "regress": "reg",
+    # packages
+    "estadd": "estadd",
+    "estout": "estout",
+    "estpost": "estpost",
+    "eststo": "eststo",
+    "esttab": "esttab",
+}
+
 
 @ctx.action_class("user")
 class UserActions:
@@ -81,6 +98,8 @@ class UserActions:
     def code_insert_named_argument(parameter_name: str):
         actions.insert(f"{parameter_name} ")
 
-
-
+    # functions_common.py
+    def code_insert_function(text: str, selection: str):
+        text += f"{selection or ''} "    
+        actions.user.paste(text)
 
