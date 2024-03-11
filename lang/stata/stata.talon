@@ -10,7 +10,8 @@ tag(): user.code_functions
 settings():
     user.code_private_function_formatter = "SNAKE_CASE"
 
-
+arg {user.code_parameter_name}:
+    user.code_insert_named_argument(code_parameter_name)
 
 
 

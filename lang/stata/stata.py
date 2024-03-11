@@ -6,6 +6,12 @@ ctx.matches = r"""
 code.language: stata
 """
 
+ctx.lists["user.code_parameter_name"] = {
+    # regressions
+    "v c e robust": "vce(robust)",
+    "v c e cluster": "vce(cluster)",
+}
+
 @ctx.action_class("user")
 class UserActions:
     def code_block():
@@ -72,7 +78,8 @@ class UserActions:
     def code_default_function(text: str):
         actions.user.code_private_function(text)
 
-    
+    def code_insert_named_argument(parameter_name: str):
+        actions.insert(f"{parameter_name} ")
 
 
 
