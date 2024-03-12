@@ -100,6 +100,6 @@ class UserActions:
 
     # functions_common.py
     def code_insert_function(text: str, selection: str):
-        text += f"{selection or ''} "    
+        text += f" {selection or ''}"    
         actions.user.paste(text)
 
