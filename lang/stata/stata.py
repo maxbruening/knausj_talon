@@ -115,7 +115,7 @@ class UserActions:
 
     # libraries_gui.py
     def code_insert_library(text: str, selection: str):
-        actions.actions.auto_insert("ssc install ")
+        actions.auto_insert("ssc install ")
         actions.user.paste(text + selection)
 
     # operators_array.py
