@@ -28,58 +28,18 @@ ctx.lists["user.code_common_function"] = {
     "esttab": "esttab",
 }
 
+# libraries_gui.py
+ctx.lists["user.code_libraries"] = {
+    "estout": "estout",
+}
+
 
 @ctx.action_class("user")
 class UserActions:
-    def code_block():
-        actions.auto_insert("\n")
-
-    # 
-    def code_state_if():
-        actions.insert("if  {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:2")
-
-    def code_state_else_if():
-        actions.insert("else if  {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:7")
-
-    def code_state_else():
-        actions.insert("else  {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:4")  
-
-    def code_state_do():
-        actions.insert("do {")
-        actions.key("enter tab enter left")
-        actions.insert("} while ()")
-        actions.key("up tab")
-
-    def code_state_for():    
-        actions.insert("for () {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:4")
-
-    def code_state_for_each():
-        actions.insert("foreach  in {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:7")
-
-    def code_break():
-        actions.insert("break")
-
-    def code_next():
-        actions.insert("continue")        
-
+    # comment_line.py
     def code_comment_line_prefix():
-       actions.auto_insert("* ") 
-       # actions.auto_insert("// ") 
+        actions.auto_insert("* ")
+        # actions.auto_insert("// ")
 
     # functions.py
     def code_private_function(text: str):
@@ -100,6 +60,111 @@ class UserActions:
 
     # functions_common.py
     def code_insert_function(text: str, selection: str):
-        text += f" {selection or ''}"    
+        text += f" {selection or ''}"
         actions.user.paste(text)
 
+    # imperative.py
+    def code_block():
+        actions.auto_insert("\n")
+
+    def code_state_if():
+        actions.insert("if  {")
+        actions.key("enter tab enter left")
+        actions.insert("}")
+        actions.key("up:2 right:2")
+
+    def code_state_else_if():
+        actions.insert("else if  {")
+        actions.key("enter tab enter left")
+        actions.insert("}")
+        actions.key("up:2 right:7")
+
+    def code_state_else():
+        actions.insert("else  {")
+        actions.key("enter tab enter left")
+        actions.insert("}")
+        actions.key("up:2 right:4")
+
+    def code_state_do():
+        actions.insert("do {")
+        actions.key("enter tab enter left")
+        actions.insert("} while ()")
+        actions.key("up tab")
+
+    def code_state_for():
+        actions.insert("for () {")
+        actions.key("enter tab enter left")
+        actions.insert("}")
+        actions.key("up:2 right:4")
+
+    def code_state_for_each():
+        actions.insert("foreach  in {")
+        actions.key("enter tab enter left")
+        actions.insert("}")
+        actions.key("up:2 right:7")
+
+    def code_break():
+        actions.insert("break")
+
+    def code_next():
+        actions.insert("continue")
+
+    # libraries.py
+    def code_import():
+        actions.auto_insert("ssc install ")
+
+    # libraries_gui.py
+    def code_insert_library(text: str, selection: str):
+        actions.actions.auto_insert("ssc install ")
+        actions.user.paste(text + selection)
+
+    # operators_array.py
+    def code_operator_subscript():
+        actions.user.insert_between("[", "]")
+
+    # operators_assignment.py
+    def code_operator_assignment():
+        actions.auto_insert(" = ")
+
+    # operators_math.py
+    def code_operator_subtraction():
+        actions.auto_insert(" - ")
+
+    def code_operator_addition():
+        actions.auto_insert(" + ")
+
+    def code_operator_multiplication():
+        actions.auto_insert(" * ")
+
+    def code_operator_division():
+        actions.auto_insert(" / ")
+
+    def code_operator_modulo():
+        actions.user.insert_between("mod(", ")")
+
+    def code_operator_exponent():
+        actions.auto_insert(" ^ ")
+
+    def code_operator_equal():
+        actions.auto_insert(" == ")
+
+    def code_operator_not_equal():
+        actions.auto_insert(" != ")
+
+    def code_operator_greater_than():
+        actions.auto_insert(" > ")
+
+    def code_operator_less_than():
+        actions.auto_insert(" < ")
+
+    def code_operator_greater_than_or_equal_to():
+        actions.auto_insert(" >= ")
+
+    def code_operator_less_than_or_equal_to():
+        actions.auto_insert(" <= ")
+
+    def code_operator_and():
+        actions.auto_insert(" & ")
+
+    def code_operator_or():
+        actions.auto_insert(" | ")
