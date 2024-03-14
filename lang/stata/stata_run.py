@@ -26,7 +26,7 @@ class UserActions:
     def focus_stata_instance():
         active_windows = ui.windows()
         for w in active_windows:
-            if w.title.startswith("Stata/"):
+            if w.title.startswith("Stata/") and "Stata" in  w.app.name:
                 w.focus()
                 break
 
