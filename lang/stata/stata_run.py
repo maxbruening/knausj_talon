@@ -1,10 +1,13 @@
-from talon import Module, Context, actions
+from talon import Module, Context, actions, ui
 
 mod = Module()
 
 
 @mod.action_class
 class Actions:
+    def focus_stata_instance():
+        "focus stata instance"
+
     def stata_run_do_editor():
         "Run selected text in an open version of the Stata application via its do-file editor."
 
@@ -20,8 +23,15 @@ not win.title: Do-file Editor
 
 @ctx.action_class("user")
 class UserActions:
+    def focus_stata_instance():
+        active_windows = ui.windows()
+        for w in active_windows:
+            if w.title.startswith("Stata/"):
+                w.focus()
+                break
+
     def stata_run_do_editor():
-        actions.user.switcher_focus("Stata")
+        actions.user.focus_stata_instance()
         actions.sleep("300ms")
         actions.key("ctrl-1")
         actions.sleep("100ms")
