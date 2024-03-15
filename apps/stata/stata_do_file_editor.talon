@@ -11,12 +11,15 @@ do line:
 
 do (all | file):
     edit.select_all()
+    edit.copy()
     key(ctrl-d)
 
 do way up:
     edit.extend_file_start()
+    edit.copy()
     key(ctrl-d)
 
 do way down:
     edit.extend_file_end()
+    edit.copy()
     key(ctrl-d)
