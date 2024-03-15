@@ -18,6 +18,10 @@ mod.apps.emacs = """
 os: mac
 app.bundle: org.gnu.Emacs
 """
+mod.apps.emacs = """
+os: windows
+app.exe: emacs.exe
+"""
 
 ctx = Context()
 ctx.matches = "app: emacs"
