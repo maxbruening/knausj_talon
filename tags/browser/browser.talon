@@ -1,7 +1,5 @@
 tag: browser
 -
-tag(): user.find_and_replace
-
 address bar | go address | go url: browser.focus_address()
 go page | page focus: browser.focus_page()
 address copy | url copy | copy address | copy url:
