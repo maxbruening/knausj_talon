@@ -57,18 +57,6 @@ class UserActions:
             actions.user.paste(url_address)
             actions.key("enter")
 
-    # find_and_replace
-    def find(text: str = None):
-        actions.edit.find("")
-        if text:
-            actions.insert(text)
-
-    def find_next():    
-        actions.key("ctrl-g")   
-
-    def find_previous():
-        actions.key("ctrl-shift-g")
-
 
 @ctx.action_class("browser")
 class BrowserActions:
