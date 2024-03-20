@@ -17,7 +17,7 @@ class UserActions:
     def tab_final():
         actions.key("cmd-9")
 
-    # find_and_replace
+    # find
     def find_next():    
         actions.edit.find_next()        
 

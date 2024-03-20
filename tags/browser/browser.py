@@ -57,7 +57,7 @@ class UserActions:
             actions.user.paste(url_address)
             actions.key("enter")
 
-    # find_and_replace
+    # find
     def find(text: str = None):
         # actions.edit.find("")
         # if text:

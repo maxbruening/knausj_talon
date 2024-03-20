@@ -1,6 +1,6 @@
 tag: browser
 -
-tag(): user.find_and_replace
+tag(): user.find
 
 address bar | go address | go url: browser.focus_address()
 go page | page focus: browser.focus_page()
