@@ -59,9 +59,10 @@ class UserActions:
 
     # find_and_replace
     def find(text: str = None):
-        actions.edit.find("")
-        if text:
-            actions.insert(text)
+        # actions.edit.find("")
+        # if text:
+        #     actions.insert(text)
+        actions.edit.find(text)
 
     def find_next():    
         actions.key("ctrl-g")   
