@@ -37,10 +37,12 @@ class EditActions:
 class UserActions:
     # find
     def find(text: str = None):
-        # actions.edit.find("")
-        # if text:
-        #     actions.insert(text)
-        actions.edit.find(text)
+        if text:
+            actions.edit.find(text)
+        else:
+            actions.edit.copy()
+            actions.edit.find("")
+            actions.edit.paste()
 
     def find_next():    
         actions.key("f3")   
