@@ -33,7 +33,9 @@ class UserActions:
             actions.edit.find(text)
         else:
             actions.edit.copy()
+            actions.sleep("100ms")
             actions.edit.find("")
+            actions.sleep("30ms")
             actions.edit.paste()
 
     def find_next():    
