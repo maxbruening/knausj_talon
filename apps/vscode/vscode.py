@@ -301,6 +301,8 @@ class UserActions:
             actions.key("ctrl-shift-f")
 
         if text:
+            actions.edit.select_all()
+            actions.edit.delete()
             actions.insert(text)
 
     def find_toggle_match_by_case():
