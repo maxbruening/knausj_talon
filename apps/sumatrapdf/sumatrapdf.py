@@ -35,6 +35,21 @@ class EditActions:
 
 @ctx.action_class("user")
 class UserActions:
+    # find
+    def find(text: str = None):
+        if text:
+            actions.edit.find(text)
+        else:
+            actions.edit.copy()
+            actions.edit.find("")
+            actions.edit.paste()
+
+    def find_next():    
+        actions.key("f3")   
+
+    def find_previous():
+        actions.key("shift-f3")
+
     # user.pages
     def page_current():
         actions.key("ctrl-g")
