@@ -1,4 +1,4 @@
-tag: user.reader
+tag: reader
 -
 
 rotate right: reader.rotate_right()
