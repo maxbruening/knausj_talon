@@ -77,7 +77,7 @@ class Actions:
             clip.set_text(text)
             actions.edit.paste()
             # sleep here so that clip.revert doesn't revert the clipboard too soon
-            actions.sleep("150ms")
+            actions.sleep("250ms")
 
     def delete_right():
         """Delete character to the right"""
