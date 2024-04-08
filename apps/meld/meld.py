@@ -15,7 +15,6 @@ ctx.matches = r"""
 app: meld
 """
 
-ctx.tags = ["user.tabs"]
 
 @ctx.action_class("app")
 class AppActions:
@@ -25,7 +24,7 @@ class AppActions:
     def tab_previous():
         actions.key("ctrl-alt-pageup")
 
-    def tab_previous():
+    def tab_next():
         actions.key("ctrl-alt-pagedown")
 
     def tab_reopen():
@@ -43,5 +42,3 @@ class UserActions:
 
     def tab_duplicate():
         print("Meld does not support this action.")
-
-    
