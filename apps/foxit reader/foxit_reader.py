@@ -31,6 +31,7 @@ class UserActions:
     def find(text: str = None):
         if text:
             actions.edit.find(text)
+            actions.key("enter")
         else:
             actions.edit.copy()
             actions.sleep("100ms")
