@@ -1,6 +1,10 @@
 experiment: anchor-file
 mode: dictation
+language: en_US
 -
+settings():
+    speech.engine = 'wav2letter-wisp'
+
 press <user.modifiers> [over]: key(modifiers)
 press <user.keys> [over]: key(keys)
 
