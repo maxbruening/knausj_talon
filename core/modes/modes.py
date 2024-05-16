@@ -22,6 +22,7 @@ mode: sleep
 
 ctx_awake.matches = r"""
 not mode: sleep
+not mode: user.dragon_external
 """
 
 
