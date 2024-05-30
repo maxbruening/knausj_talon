@@ -40,4 +40,4 @@ settings():
     # user.history_enable()
     user.talon_mode()
     mode.enable("noise")
-    user.fix_volume()
+    user.nircmd_set_volume(6500)

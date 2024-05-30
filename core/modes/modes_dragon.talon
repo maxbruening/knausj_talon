@@ -1,5 +1,6 @@
 mode: sleep
 not mode: sleep
+and not mode: user.dragon_external
 speech.engine: dragon
 -
 # The optional <phrase> afterwards allows these to match even if you say arbitrary text

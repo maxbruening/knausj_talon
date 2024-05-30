@@ -17,11 +17,6 @@ do (all | file):
     edit.copy()
     user.stata_run_do_editor()
 
-do (all | file):
-    edit.select_all()
-    edit.copy()
-    user.stata_run_do_editor()
-
 do way up:
     edit.extend_file_start()
     edit.copy()
