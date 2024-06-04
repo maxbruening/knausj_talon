@@ -34,11 +34,11 @@ settings():
     user.mouse_wake()
     user.history_enable()
     user.talon_mode()
-    user.nircmd_set_volume(65000)
+    user.nircmd_set_volume("talon")
 
 ^jolt$:
     user.mouse_wake()
     # user.history_enable()
     user.talon_mode()
     mode.enable("noise")
-    user.nircmd_set_volume(65000)
+    user.nircmd_set_volume("talon")
