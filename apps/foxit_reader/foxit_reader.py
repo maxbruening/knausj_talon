@@ -32,6 +32,24 @@ class AppActions:
 
 @ctx.action_class("user")
 class UserActions:
+    # user.find
+    def find(text: str = None):
+        if text:
+            actions.edit.find(text)
+            actions.key("enter")
+        else:
+            actions.edit.copy()
+            actions.sleep("100ms")
+            actions.edit.find("")
+            actions.sleep("30ms")
+            actions.edit.paste()
+
+    def find_next():    
+        actions.key("f3")   
+
+    def find_previous():
+        actions.key("shift-f3")
+    
     # user.tabs
     def tab_jump(number):
         actions.app.notify("Foxit does not support this action.")
