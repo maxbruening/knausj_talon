@@ -9,8 +9,8 @@ code.language: stata
 # functions.py
 ctx.lists["user.code_parameter_name"] = {
     # regressions
-    "v c e cluster": "vce(cluster)",
-    "v c e robust": "vce(robust)",
+    "V C E cluster": "vce(cluster)",
+    "V C E robust": "vce(robust)",
 }
 
 # functions_common.py
@@ -39,7 +39,6 @@ class UserActions:
     # comment_line.py
     def code_comment_line_prefix():
         actions.auto_insert("* ")
-        # actions.auto_insert("// ")
 
     # functions.py
     def code_private_function(text: str):
@@ -68,40 +67,38 @@ class UserActions:
         actions.auto_insert("\n")
 
     def code_state_if():
-        actions.insert("if  {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:2")
+        actions.insert("if  {\n\n}")
+        actions.key("up tab up")
+        actions.edit.line_end()
+        actions.key("left:2")
 
     def code_state_else_if():
-        actions.insert("else if  {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:7")
+        actions.insert("else if  {\n\n}")
+        actions.key("up tab up")
+        actions.edit.line_end()
+        actions.key("left:2")
 
     def code_state_else():
-        actions.insert("else  {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:4")
-
-    def code_state_do():
-        actions.insert("do {")
-        actions.key("enter tab enter left")
-        actions.insert("} while ()")
+        actions.insert("else {\n\n}")
         actions.key("up tab")
 
     def code_state_for():
-        actions.insert("for () {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:4")
+        actions.insert("forval  {\n\n}")
+        actions.key("up tab up")
+        actions.edit.line_end()
+        actions.key("left:2")
 
     def code_state_for_each():
-        actions.insert("foreach  in {")
-        actions.key("enter tab enter left")
-        actions.insert("}")
-        actions.key("up:2 right:7")
+        actions.insert("foreach  in  {\n\n}")
+        actions.key("up tab up")
+        actions.edit.line_end()
+        actions.key("left:2")
+
+    def code_state_while():
+        actions.insert("while  {\n\n}")
+        actions.key("up tab up")
+        actions.edit.line_end()
+        actions.key("left:2")
 
     def code_break():
         actions.insert("break")
