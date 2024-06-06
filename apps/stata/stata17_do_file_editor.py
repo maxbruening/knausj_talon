@@ -11,6 +11,7 @@ win.title: /^Do-file Editor/
 @ctx.action_class("user")
 class UserActions:
 
+    # imperative.py
     def code_state_if():
         actions.insert("if  {\n")
         actions.key("up")
@@ -43,3 +44,31 @@ class UserActions:
         actions.key("up")
         actions.edit.line_end()
         actions.key("left:2")
+
+    # imperative_stata
+    def code_state_place_cursor():
+        actions.key("up")
+        actions.edit.line_end()
+        actions.key("left:2")
+
+    def code_state_for_each_local():
+        actions.insert("foreach m of local  {\n")
+        actions.user.code_state_place_cursor()
+
+    def code_state_for_each_global():
+        actions.insert("foreach g of global  {\n")
+        actions.user.code_state_place_cursor()
+
+    def code_state_for_each_varlist():
+        actions.insert("foreach var of varlist  {\n")
+        actions.user.code_state_place_cursor()
+
+    def code_state_for_each_newlist():
+        actions.insert("foreach var of newlist  {\n")
+        actions.user.code_state_place_cursor()
+
+    def code_state_for_each_numlist():
+        actions.insert("foreach num of numlist  {\n")
+        actions.user.code_state_place_cursor()
+
+    

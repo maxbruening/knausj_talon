@@ -106,6 +106,32 @@ class UserActions:
     def code_next():
         actions.insert("continue")
 
+    # imperative_stata
+    def code_state_place_cursor():
+        actions.key("up tab up")
+        actions.edit.line_end()
+        actions.key("left:2")
+
+    def code_state_for_each_local():
+        actions.insert("foreach m of local  {\n\n}")
+        actions.user.code_state_place_cursor()
+
+    def code_state_for_each_global():
+        actions.insert("foreach g of global  {\n\n}")
+        actions.user.code_state_place_cursor()
+
+    def code_state_for_each_varlist():
+        actions.insert("foreach var of varlist  {\n\n}")
+        actions.user.code_state_place_cursor()
+
+    def code_state_for_each_newlist():
+        actions.insert("foreach var of newlist  {\n\n}")
+        actions.user.code_state_place_cursor()
+
+    def code_state_for_each_numlist():
+        actions.insert("foreach num of numlist  {\n\n}")
+        actions.user.code_state_place_cursor()
+
     # libraries.py
     def code_import():
         actions.auto_insert("ssc install ")

@@ -17,8 +17,6 @@ settings():
 
 arg {user.code_parameter_name}: user.code_insert_named_argument(code_parameter_name)
 
-state for val: user.code_state_for()
-
 # alternative to saying ""state import""
 s s c install: user.code_import()
 
@@ -26,3 +24,12 @@ s s c install <user.code_libraries>: user.code_insert_library(code_libraries, ""
 
 toggle imports: user.code_toggle_libraries()
 toggle packages: user.code_toggle_libraries()
+
+state for val: user.code_state_for()
+
+# more stata imperatives
+[state] foreach local: user.code_state_for_each_local()
+[state] foreach global: user.code_state_for_each_global()
+[state] foreach var [list]: user.code_state_for_each_varlist()
+[state] foreach new [list]: user.code_state_for_each_newlist()
+[state] foreach num [list]: user.code_state_for_each_numlist()
