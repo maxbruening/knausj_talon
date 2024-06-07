@@ -55,13 +55,13 @@ class UserActions:
         
         # go left
         if left:
-            actions.edit.extend_word_left()
-            actions.edit.extend_word_left()
+            actions.edit.extend_line_start()
             before = actions.edit.selected_text()
-            actions.edit.right()  # deselect
-            # if there is a newline to the right, we need to go left again
-            if after.startswith("\r\n"):
-                actions.edit.left()
+            if before != "":
+                actions.edit.right()  # deselect
+                # if there is a newline to the right and the line was not empty, we need to go left again
+                if after.startswith("\r\n"):
+                    actions.edit.left()
         
         print('after.'+after+".end")
         print("before."+str(before)+".end")
