@@ -5,8 +5,8 @@ language: en_US
 settings():
     speech.engine = 'wav2letter-wisp'
 
-press <user.modifiers> [over]: key(modifiers)
-press <user.keys> [over]: key(keys)
+press <user.modifiers> [then]: key(modifiers)
+press <user.keys> [then]: key(keys)
 
 # Everything here should call `user.dictation_insert()` instead of `insert()`, to correctly auto-capitalize/auto-space.
 <user.raw_prose>: user.dictation_insert(raw_prose)

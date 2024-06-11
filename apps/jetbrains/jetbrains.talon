@@ -46,7 +46,7 @@ go back: user.idea("action Back")
 go forward: user.idea("action Forward")
 # Search
 find (everywhere | all): user.idea("action SearchEverywhere")
-find (everywhere | all) <user.text> [over]:
+find (everywhere | all) <user.text> [then]:
     user.idea("action SearchEverywhere")
     sleep(500ms)
     insert(text)
@@ -60,16 +60,16 @@ find (everywhere | all) <user.text> [over]:
     key("enter")
 recent: user.idea("action RecentFiles")
 
-surround [this] with <user.text> [over]:
+surround [this] with <user.text> [then]:
     idea("action SurroundWith")
     sleep(500ms)
     insert(text)
 # Making these longer to reduce collisions with real code dictation.
-insert generated <user.text> [over]:
+insert generated <user.text> [then]:
     user.idea("action Generate")
     sleep(500ms)
     insert(text)
-insert template <user.text> [over]:
+insert template <user.text> [then]:
     idea("action InsertLiveTemplate")
     sleep(500ms)
     insert(text)
@@ -78,7 +78,7 @@ create (template | snippet): user.idea("action SaveAsTemplate")
 toggle recording: user.idea("action StartStopMacroRecording")
 change (recording | recordings): user.idea("action EditMacros")
 play recording: user.idea("action PlaybackLastMacro")
-play recording <user.text> [over]:
+play recording <user.text> [then]:
     idea("action PlaySavedMacrosAction")
     insert(text)
     sleep(500ms)
@@ -106,12 +106,12 @@ copy reference: user.idea("action CopyReference")
 copy pretty: user.idea("action CopyAsRichText")
 # File Creation
 create sibling: user.idea("action NewElementSamePlace")
-create sibling <user.text> [over]:
+create sibling <user.text> [then]:
     user.idea("action NewElementSamePlace")
     sleep(500ms)
     insert(text)
 create file: user.idea("action NewElement")
-create file <user.text> [over]:
+create file <user.text> [then]:
     user.idea("action NewElement")
     sleep(500ms)
     insert(text)
@@ -229,26 +229,26 @@ refactor <number> until <number>:
 clone <number>: user.line_clone(number)
 
 #find/replace
-clear last <user.text> [over]: user.idea("find prev {text}, action EditorBackSpace")
-clear next <user.text> [over]: user.idea("find next {text}, action EditorBackSpace")
-comment last <user.text> [over]:
+clear last <user.text> [then]: user.idea("find prev {text}, action EditorBackSpace")
+clear next <user.text> [then]: user.idea("find next {text}, action EditorBackSpace")
+comment last <user.text> [then]:
     user.idea("find prev {text}, action CommentByLineComment")
-comment next <user.text> [over]:
+comment next <user.text> [then]:
     user.idea("find next {text}, action CommentByLineComment")
-go last <user.text> [over]: user.idea("find prev {text}, action EditorRight")
-go next <user.text> [over]: user.idea("find next {text}, action EditorRight")
-paste last <user.text> [over]:
+go last <user.text> [then]: user.idea("find prev {text}, action EditorRight")
+go next <user.text> [then]: user.idea("find next {text}, action EditorRight")
+paste last <user.text> [then]:
     user.idea("find prev {text}, action EditorRight, action EditorPaste")
-paste next <user.text> [over]:
+paste next <user.text> [then]:
     user.idea("find next {text}, action EditorRight, action EditorPaste")
-refactor last <user.text> [over]:
+refactor last <user.text> [then]:
     user.idea("find prev {text}, action Refactorings.QuickListPopupAction")
-refactor next <user.text> [over]:
+refactor next <user.text> [then]:
     user.idea("find next {text}, action Refactorings.QuickListPopupAction")
-replace last <user.text> [over]: user.idea("find prev {text}, action EditorPaste")
-replace next <user.text> [over]: user.idea("find next {text}, action EditorPaste")
-select last <user.text> [over]: user.idea("find prev {text}")
-select next <user.text> [over]: user.idea("find next {text}")
+replace last <user.text> [then]: user.idea("find prev {text}, action EditorPaste")
+replace next <user.text> [then]: user.idea("find next {text}, action EditorPaste")
+select last <user.text> [then]: user.idea("find prev {text}")
+select next <user.text> [then]: user.idea("find next {text}")
 
 select camel left: user.extend_camel_left()
 select camel right: user.extend_camel_right()

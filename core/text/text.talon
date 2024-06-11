@@ -1,14 +1,14 @@
-#provide both anchored and unachored commands via 'over'
+#provide both anchored and unachored commands via 'then'
 phrase <user.text>$:
     user.add_phrase_to_history(text)
     insert(text)
-phrase <user.text> over:
+phrase <user.text> then:
     user.add_phrase_to_history(text)
     insert(text)
 {user.prose_formatter} <user.prose>$: user.insert_formatted(prose, prose_formatter)
-{user.prose_formatter} <user.prose> over: user.insert_formatted(prose, prose_formatter)
+{user.prose_formatter} <user.prose> then: user.insert_formatted(prose, prose_formatter)
 <user.format_code>+$: user.insert_many(format_code_list)
-<user.format_code>+ over: user.insert_many(format_code_list)
+<user.format_code>+ then: user.insert_many(format_code_list)
 <user.formatters> that: user.formatters_reformat_selection(user.formatters)
 ^format [this] <user.formatters>$: user.formatters_reformat_selection(formatters)
 word <user.word>:
