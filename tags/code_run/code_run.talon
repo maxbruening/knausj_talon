@@ -1,9 +1,9 @@
 tag: user.code_run
 -
-run this: code_run.selection()
-run way left: code_run.line_start()
-run way right: code_run.line_end()
-run line: code_run.line()
-run (all | file): code_run.file()
-run way up: code_run.file_start()
-run way down: code_run.file_end()
+run this: user.code_run_selection()
+run way left: user.code_run_line_start()
+run way right: user.code_run_line_end()
+run line: user.code_run_line()
+run (all | file): user.code_run_file()
+run way up: user.code_run_file_start()
+run way down: user.code_run_file_end()
