@@ -6,33 +6,6 @@ ctx.matches = r"""
 code.language: stata
 """
 
-# functions.py
-ctx.lists["user.code_parameter_name"] = {
-    # regressions
-    "V C E cluster": "vce(cluster)",
-    "V C E robust": "vce(robust)",
-}
-
-# functions_common.py
-ctx.lists["user.code_common_function"] = {
-    # base stata
-    "global": "global",
-    "local": "local",
-    "reg": "reg",
-    "regress": "reg",
-    # packages
-    "estadd": "estadd",
-    "estout": "estout",
-    "estpost": "estpost",
-    "eststo": "eststo",
-    "esttab": "esttab",
-}
-
-# libraries_gui.py
-ctx.lists["user.code_libraries"] = {
-    "estout": "estout",
-}
-
 
 @ctx.action_class("user")
 class UserActions:

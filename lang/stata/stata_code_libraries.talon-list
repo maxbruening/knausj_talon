@@ -1,0 +1,18 @@
+list: user.code_libraries
+code.language: stata
+-
+# output
+estout
+outtable
+coefplot
+balancetable
+tabout
+# colors
+blindschemes
+palettes
+scheme_tufte
+# misc
+unique
+grstyle
+gtools
+touch
