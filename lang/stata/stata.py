@@ -36,6 +36,68 @@ ctx.lists["user.code_libraries"] = {
 
 @ctx.action_class("user")
 class UserActions:
+    # code_run tag
+    def focus_stata_instance():
+        """focus stata instance"""
+        active_windows = ui.windows()
+        for w in active_windows:
+            if w.title.startswith("Stata") and "Stata" in w.app.name:
+                w.focus()
+                break
+
+    def stata_run_do_editor():
+        """Run selected text in an open version of the Stata application via its do-file editor."""
+        actions.user.focus_stata_instance()
+        actions.sleep("300ms")
+        actions.key("ctrl-1")
+        actions.sleep("100ms")
+        actions.edit.select_all()
+        actions.insert("doedit")
+        actions.key("enter")
+        actions.sleep("300ms")
+        actions.edit.select_all()
+        actions.edit.paste()
+        actions.key("ctrl-d")
+        actions.user.delete_all()
+        actions.app.window_close()
+        actions.sleep("100ms")
+        actions.edit.right()
+        actions.key("enter")
+        # actions.sleep("300ms")
+        actions.user.switcher_focus("Stata")
+        
+    def code_run_selection():
+        actions.edit.copy()
+        actions.user.stata_run_do_editor()
+
+    def code_run_line_start():
+        actions.edit.line_start()
+        actions.user.stata_run_do_editor()
+
+    def code_run_line_end():
+        actions.edit.line_end()
+        actions.user.stata_run_do_editor()
+        
+    def code_run_line():
+        actions.edit.select_line()
+        actions.edit.copy()
+        actions.user.stata_run_do_editor()
+
+    def code_run_file():
+        actions.edit.extend_file_start()
+        actions.edit.copy()
+        actions.user.stata_run_do_editor()
+
+    def code_run_way_up():
+        actions.edit.extend_file_start()
+        actions.edit.copy()
+        actions.user.stata_run_do_editor()
+
+    def code_run_way_down():
+        actions.edit.extend_file_end()
+        actions.edit.copy()
+        actions.user.stata_run_do_editor()
+
     # comment_line.py
     def code_comment_line_prefix():
         actions.auto_insert("* ")

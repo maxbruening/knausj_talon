@@ -11,6 +11,7 @@ tag(): user.code_libraries
 tag(): user.code_libraries_gui
 tag(): user.code_operators_array
 tag(): user.code_operators_assignment
+tag(): user.code_run
 
 settings():
     user.code_private_function_formatter = "SNAKE_CASE"
