@@ -1,4 +1,4 @@
-from talon import Context, actions, settings
+from talon import Context, actions, settings, ui
 
 ctx = Context()
 
@@ -143,27 +143,33 @@ class UserActions:
 
     # imperative_stata
     def code_state_place_cursor():
+        """Places cursor in stata statements"""
         actions.key("up tab up")
         actions.edit.line_end()
         actions.key("left:2")
 
     def code_state_for_each_local():
+        """Inserts stata 'foreach m of local' statement"""
         actions.insert("foreach m of local  {\n\n}")
         actions.user.code_state_place_cursor()
 
     def code_state_for_each_global():
+        """Inserts stata 'foreach g of global' statement"""
         actions.insert("foreach g of global  {\n\n}")
         actions.user.code_state_place_cursor()
 
     def code_state_for_each_varlist():
+        """Inserts stata 'foreach var of varlist' statement"""
         actions.insert("foreach var of varlist  {\n\n}")
         actions.user.code_state_place_cursor()
 
     def code_state_for_each_newlist():
+        """Inserts stata 'foreach var of newlist' statement"""
         actions.insert("foreach var of newlist  {\n\n}")
         actions.user.code_state_place_cursor()
 
     def code_state_for_each_numlist():
+        """Inserts stata 'foreach num of numlist' statement"""
         actions.insert("foreach num of numlist  {\n\n}")
         actions.user.code_state_place_cursor()
 
