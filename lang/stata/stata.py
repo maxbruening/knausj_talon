@@ -1,15 +1,10 @@
-from talon import Context, actions, settings, ui
+from talon import Module, Context, actions, settings, ui
 
+mod = Module()
 ctx = Context()
 
-ctx.matches = r"""
-code.language: stata
-"""
-
-
-@ctx.action_class("user")
-class UserActions:
-    # code_run tag
+@mod.action_class
+class Actions:
     def focus_stata_instance():
         """focus stata instance"""
         active_windows = ui.windows()
@@ -38,7 +33,35 @@ class UserActions:
         actions.key("enter")
         # actions.sleep("300ms")
         actions.user.switcher_focus("Stata")
-        
+
+    # imperative_stata
+    def code_state_place_cursor():
+        """Places cursor in stata statements"""
+
+    def code_state_for_each_local():
+        """Inserts stata 'foreach m of local' statement"""
+
+    def code_state_for_each_global():
+        """Inserts stata 'foreach g of global' statement"""
+
+    def code_state_for_each_varlist():
+        """Inserts stata 'foreach var of varlist' statement"""
+
+    def code_state_for_each_newlist():
+        """Inserts stata 'foreach var of newlist' statement"""
+
+    def code_state_for_each_numlist():
+        """Inserts stata 'foreach num of numlist' statement"""
+
+
+ctx.matches = r"""
+code.language: stata
+"""
+
+
+@ctx.action_class("user")
+class UserActions:
+    # code_run tag        
     def code_run_selection():
         actions.edit.copy()
         actions.user.stata_run_do_editor()
@@ -61,12 +84,12 @@ class UserActions:
         actions.edit.copy()
         actions.user.stata_run_do_editor()
 
-    def code_run_way_up():
+    def code_run_file_start():
         actions.edit.extend_file_start()
         actions.edit.copy()
         actions.user.stata_run_do_editor()
 
-    def code_run_way_down():
+    def code_run_file_end():
         actions.edit.extend_file_end()
         actions.edit.copy()
         actions.user.stata_run_do_editor()
@@ -143,33 +166,27 @@ class UserActions:
 
     # imperative_stata
     def code_state_place_cursor():
-        """Places cursor in stata statements"""
         actions.key("up tab up")
         actions.edit.line_end()
         actions.key("left:2")
 
     def code_state_for_each_local():
-        """Inserts stata 'foreach m of local' statement"""
         actions.insert("foreach m of local  {\n\n}")
         actions.user.code_state_place_cursor()
 
     def code_state_for_each_global():
-        """Inserts stata 'foreach g of global' statement"""
         actions.insert("foreach g of global  {\n\n}")
         actions.user.code_state_place_cursor()
 
     def code_state_for_each_varlist():
-        """Inserts stata 'foreach var of varlist' statement"""
         actions.insert("foreach var of varlist  {\n\n}")
         actions.user.code_state_place_cursor()
 
     def code_state_for_each_newlist():
-        """Inserts stata 'foreach var of newlist' statement"""
         actions.insert("foreach var of newlist  {\n\n}")
         actions.user.code_state_place_cursor()
 
     def code_state_for_each_numlist():
-        """Inserts stata 'foreach num of numlist' statement"""
         actions.insert("foreach num of numlist  {\n\n}")
         actions.user.code_state_place_cursor()
 
