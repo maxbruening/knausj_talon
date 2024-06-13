@@ -32,6 +32,15 @@ class Actions:
         # actions.sleep("300ms")
         actions.user.switcher_focus("Stata")
 
+    def stata_help(arg: str):
+        """Opens help for the command or <user.text>/ the stata viewer"""
+
+    def stata_browse():
+        """Opens the data editor"""
+
+    def stata_do_file_editor():
+        """Opens a new empty tab in the do-file editor"""
+
     # imperative_stata
     def code_state_place_cursor():
         """Places cursor in stata statements"""
@@ -56,9 +65,23 @@ ctx.matches = r"""
 code.language: stata
 """
 
-
 @ctx.action_class("user")
 class UserActions:
+    # Navigate in stata
+    def stata_help(arg: str):
+        actions.user.focus_stata_instance()
+        actions.key("ctrl-1")
+        actions.auto_insert("help "+arg)
+        actions.key("enter")
+
+    def stata_browse():
+        actions.user.focus_stata_instance()
+        actions.key("ctrl-8")
+
+    def stata_do_file_editor():
+        actions.user.focus_stata_instance()
+        actions.key("ctrl-9")
+
     # code_run tag        
     def code_run_selection():
         actions.edit.copy()

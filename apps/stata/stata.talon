@@ -1,4 +1,4 @@
-# Commands for the Stata Do-File Editor
+# Anywhere in the stata application
 os: windows
 app: stata
 -

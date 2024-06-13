@@ -34,3 +34,9 @@ state for val: user.code_state_for()
 [state] foreach var [list]: user.code_state_for_each_varlist()
 [state] foreach new [list]: user.code_state_for_each_newlist()
 [state] foreach num [list]: user.code_state_for_each_numlist()
+
+
+# Navigate in stata
+help {user.code_common_function}: user.stata_help(user.code_common_function)
+browse: user.stata_browse()
+do edit: user.stata_do_file_editor()
