@@ -31,7 +31,7 @@ state for val: user.code_state_for()
 # more stata imperatives
 [state] foreach local: user.code_state_for_each_local()
 [state] foreach global: user.code_state_for_each_global()
-[state] foreach var [list]: user.code_state_for_each_varlist()
+[state] foreach (varlist | var [list]): user.code_state_for_each_varlist()
 [state] foreach new [list]: user.code_state_for_each_newlist()
 [state] foreach num [list]: user.code_state_for_each_numlist()
 
@@ -40,3 +40,4 @@ state for val: user.code_state_for()
 help {user.code_common_function}: user.stata_help(user.code_common_function)
 browse: user.stata_browse()
 do edit: user.stata_do_file_editor()
+stata print variables: user.stata_print_variables()

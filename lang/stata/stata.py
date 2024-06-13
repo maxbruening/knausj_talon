@@ -1,7 +1,10 @@
+import os
 from talon import Module, Context, actions, settings, ui
 
 mod = Module()
 ctx = Context()
+
+REPO_DIR = os.path.dirname(os.path.dirname(__file__))
 
 @mod.action_class
 class Actions:
@@ -40,6 +43,9 @@ class Actions:
 
     def stata_do_file_editor():
         """Opens a new empty tab in the do-file editor"""
+
+    def stata_print_variables():
+        """Prints a talon-list with all current variables"""
 
     # imperative_stata
     def code_state_place_cursor():
@@ -81,6 +87,35 @@ class UserActions:
     def stata_do_file_editor():
         actions.user.focus_stata_instance()
         actions.key("ctrl-9")
+
+    def stata_print_variables():
+        file_name = os.path.join(REPO_DIR, "stata", "stata_variables.talon-list")
+
+        actions.user.focus_stata_instance()
+        actions.sleep("300ms")
+        actions.key("ctrl-9")
+        actions.sleep("300ms")
+
+        file_name = os.path.join(REPO_DIR, "stata", "stata_variables.talon-list")
+        actions.user.paste(
+            'file open f1 using "'+str(file_name)+'" ,write replace text\n\n'
+            'file write f1 "list: user.stata_variable_list" _n ///\n'
+            '"code.language: stata" _n "-" _n\n\n'
+            'foreach var of varlist _all {\n'
+            '''\tfile write f1 `"`var'"'\n'''
+            '''\tfile write f1 `"`varlabel': `var'"' _n\n'''
+            '}\n\n'
+            'file close f1\n'
+        )
+
+        # actions.key("ctrl-d")
+        # actions.user.delete_all()
+        # actions.app.window_close()
+        # actions.sleep("200ms")
+        # actions.edit.right()
+        # actions.key("enter")
+        # # actions.sleep("300ms")
+        # actions.user.switcher_focus_last()
 
     # code_run tag        
     def code_run_selection():
