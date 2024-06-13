@@ -14,11 +14,11 @@ class UserActions:
         actions.key("ctrl-d")
 
     def code_run_line_start():
-        actions.edit.line_start()
+        actions.edit.extend_line_start()
         actions.key("ctrl-d")
 
     def code_run_line_end():
-        actions.edit.line_start()
+        actions.edit.extend_line_start()
         actions.key("ctrl-d")
 
     def code_run_line():
