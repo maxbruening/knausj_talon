@@ -14,12 +14,10 @@ class UserActions:
         actions.key("ctrl-d")
 
     def code_run_line_start():
-        actions.edit.extend_line_start()
-        actions.key("ctrl-d")
+        print("This action cannot be implemented in stata's do-file editor because it automatically selects the whole line.")
 
     def code_run_line_end():
-        actions.edit.extend_line_start()
-        actions.key("ctrl-d")
+        print("This action cannot be implemented in stata's do-file editor because it automatically selects the whole line.")
 
     def code_run_line():
         actions.edit.select_line()
