@@ -7,6 +7,8 @@ ctx = Context()
 class Actions:
     def focus_stata_instance():
         """focus stata instance"""
+        # I could include a check that only one stata instance is open.
+        # I could also define what to do if no stata instance is open.
         active_windows = ui.windows()
         for w in active_windows:
             if w.title.startswith("Stata") and "Stata" in w.app.name:
@@ -15,6 +17,7 @@ class Actions:
 
     def stata_run_do_editor():
         """Run selected text in an open version of the Stata application via its do-file editor."""
+        # Alternatively, I could print to a file and then run the file from stata's command window
         actions.user.focus_stata_instance()
         actions.sleep("300ms")
         actions.key("ctrl-1")
@@ -28,7 +31,7 @@ class Actions:
         actions.key("ctrl-d")
         actions.user.delete_all()
         actions.app.window_close()
-        actions.sleep("100ms")
+        actions.sleep("200ms")
         actions.edit.right()
         actions.key("enter")
         # actions.sleep("300ms")
@@ -67,11 +70,13 @@ class UserActions:
         actions.user.stata_run_do_editor()
 
     def code_run_line_start():
-        actions.edit.line_start()
+        actions.edit.extend_line_start()
+        actions.edit.copy()
         actions.user.stata_run_do_editor()
 
     def code_run_line_end():
-        actions.edit.line_end()
+        actions.edit.extend_line_end()
+        actions.edit.copy()
         actions.user.stata_run_do_editor()
         
     def code_run_line():
