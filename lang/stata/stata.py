@@ -96,7 +96,7 @@ class UserActions:
     def stata_print_variables():
         actions.user.focus_stata_instance()
 
-        file_name = os.path.join(REPO_DIR, "stata", "stata_variables.talon-list")
+        file_name = os.path.join(REPO_DIR, "stata", "stata_code_variables.talon-list")
 
         actions.sleep("300ms")
         actions.key("ctrl-9")
