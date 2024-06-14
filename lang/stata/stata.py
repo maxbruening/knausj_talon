@@ -6,6 +6,8 @@ ctx = Context()
 
 REPO_DIR = os.path.dirname(os.path.dirname(__file__))
 
+mod.list("stata_variable_list", "List of stata variables")
+
 @mod.action_class
 class Actions:
     def focus_stata_instance():
@@ -46,6 +48,9 @@ class Actions:
 
     def stata_print_variables():
         """Prints a talon-list with all current variables"""
+
+    def code_insert_stata_variables(varlist: list):
+        """Insert stata variables from the list"""
 
     # imperative_stata
     def code_state_place_cursor():
@@ -89,33 +94,41 @@ class UserActions:
         actions.key("ctrl-9")
 
     def stata_print_variables():
+        actions.user.focus_stata_instance()
+
         file_name = os.path.join(REPO_DIR, "stata", "stata_variables.talon-list")
 
-        actions.user.focus_stata_instance()
         actions.sleep("300ms")
         actions.key("ctrl-9")
         actions.sleep("300ms")
 
-        file_name = os.path.join(REPO_DIR, "stata", "stata_variables.talon-list")
         actions.user.paste(
             'file open f1 using "'+str(file_name)+'" ,write replace text\n\n'
             'file write f1 "list: user.stata_variable_list" _n ///\n'
             '"code.language: stata" _n "-" _n\n\n'
             'foreach var of varlist _all {\n'
-            '''\tfile write f1 `"`var'"'\n'''
-            '''\tfile write f1 `"`varlabel': `var'"' _n\n'''
+            '''\tlocal varlabel: variable label `var'\n'''
+            '''\tfile write f1 `"`var'"' _n\n'''
+            '''\tif "`varlabel'" != "" & "`varlabel'" != "`var'" {\n'''
+            '''\t\tfile write f1 `"`varlabel': `var'"' _n\n'''
+            '''\t}\n'''
             '}\n\n'
             'file close f1\n'
         )
 
-        # actions.key("ctrl-d")
-        # actions.user.delete_all()
-        # actions.app.window_close()
-        # actions.sleep("200ms")
-        # actions.edit.right()
-        # actions.key("enter")
-        # # actions.sleep("300ms")
-        # actions.user.switcher_focus_last()
+        actions.key("ctrl-d")
+        actions.user.delete_all()
+        actions.app.window_close()
+        actions.sleep("200ms")
+        actions.edit.right()
+        actions.sleep("200ms")
+        actions.key("enter")
+        actions.sleep("200ms")
+        actions.user.switcher_focus_last()
+
+    def code_insert_stata_variables(varlist: list):
+        for var in varlist:
+            actions.insert(f"{var} ")
 
     # code_run tag        
     def code_run_selection():

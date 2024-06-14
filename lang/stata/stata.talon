@@ -40,4 +40,9 @@ state for val: user.code_state_for()
 help {user.code_common_function}: user.stata_help(user.code_common_function)
 browse: user.stata_browse()
 do edit: user.stata_do_file_editor()
+
+# more snippets
+arg {user.code_parameter_name}: user.code_insert_named_argument(code_parameter_name)
+
 stata print variables: user.stata_print_variables()
+var {user.stata_variable_list}+: user.code_insert_stata_variables(stata_variable_list_list)
