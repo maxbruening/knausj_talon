@@ -16,49 +16,51 @@ tag(): user.code_run
 settings():
     user.code_private_function_formatter = "SNAKE_CASE"
 
-
-# alternative to saying ""state import""
-s s c install: user.code_import()
-
-s s c install <user.code_libraries>: user.code_insert_library(code_libraries, "")
-
 (toggle | tog) imports: user.code_toggle_libraries()
 (toggle | tog) packages: user.code_toggle_libraries()
 
-state for val: user.code_state_for()
+### more stata imperatives
+s s c install: user.code_import() # alternative to saying ""state import""
+s s c install <user.code_libraries>: user.code_insert_library(code_libraries, "")
 
-# more stata imperatives
+state for val: user.code_state_for()
 [state] foreach local: user.code_state_for_each_local()
 [state] foreach global: user.code_state_for_each_global()
 [state] foreach (varlist | var [list]): user.code_state_for_each_varlist()
 [state] foreach new [list]: user.code_state_for_each_newlist()
 [state] foreach num [list]: user.code_state_for_each_numlist()
 
+### Navigate in stata
+help {user.code_common_function}:
+    user.stata_help(user.code_common_function)
+# opens the help for the function/command
 
-# Navigate in stata
-help {user.code_common_function}: user.stata_help(user.code_common_function)
 browse: user.stata_browse()
-do edit: user.stata_do_file_editor()
+# starts the data editor
 
-# more snippets
+do edit: user.stata_do_file_editor()
+# starts the do-file editor
+
+### more snippets
+capture {user.code_common_function}:
+    user.paste("capture ")
+    user.code_insert_function(code_common_function, "")
+
+quietly {user.code_common_function}:
+    user.paste("qui ")
+    user.code_insert_function(code_common_function, "")
+
 arg {user.code_parameter_name}: user.code_insert_named_argument(code_parameter_name)
 
 stata print variables: user.stata_print_variables()
 var {user.stata_variable_list}+: user.code_insert_stata_variables(stata_variable_list_list)
 
-(sta | stata) quote: user.insert_between("`","'")
-local var: insert("`var' ")
-local <user.text>: 
-    formatted = user.formatted_text(text,"SNAKE_CASE,NO_SPACES")
-    insert("`{formatted}' ")
-    
-global <user.text>: 
-    formatted = user.formatted_text(text,"SNAKE_CASE,NO_SPACES")
-    key("$")
-    start = "{"+formatted
-    user.paste(start)
-    insert("} ")
+(sta | stata) quote: user.insert_between("`", "'")
+local var: user.paste("`var' ")
+local <user.text> [then]:
+    formatted = user.formatted_text(text, "SNAKE_CASE")
+    user.paste("`{formatted}' ")
 
-# funk [capture
-
-
+global <user.text> [then]:
+    formatted = user.formatted_text(text, "SNAKE_CASE")
+    user.paste("${{{formatted}}} ")
