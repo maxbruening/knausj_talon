@@ -16,7 +16,6 @@ tag(): user.code_run
 settings():
     user.code_private_function_formatter = "SNAKE_CASE"
 
-arg {user.code_parameter_name}: user.code_insert_named_argument(code_parameter_name)
 
 # alternative to saying ""state import""
 s s c install: user.code_import()
@@ -46,3 +45,20 @@ arg {user.code_parameter_name}: user.code_insert_named_argument(code_parameter_n
 
 stata print variables: user.stata_print_variables()
 var {user.stata_variable_list}+: user.code_insert_stata_variables(stata_variable_list_list)
+
+(sta | stata) quote: user.insert_between("`","'")
+local var: insert("`var' ")
+local <user.text>: 
+    formatted = user.formatted_text(text,"SNAKE_CASE,NO_SPACES")
+    insert("`{formatted}' ")
+    
+global <user.text>: 
+    formatted = user.formatted_text(text,"SNAKE_CASE,NO_SPACES")
+    key("$")
+    start = "{"+formatted
+    user.paste(start)
+    insert("} ")
+
+# funk [capture
+
+
