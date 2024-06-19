@@ -126,10 +126,6 @@ class UserActions:
         actions.sleep("200ms")
         actions.user.switcher_focus_last()
 
-    def code_insert_stata_variables(varlist: list):
-        for var in varlist:
-            actions.insert(f"{var} ")
-
     # code_run tag        
     def code_run_selection():
         actions.edit.copy()

@@ -21,7 +21,15 @@ settings():
 
 ### more stata imperatives
 s s c install: user.code_import() # alternative to saying ""state import""
-s s c install <user.code_libraries>: user.code_insert_library(code_libraries, "")
+s s c install <user.code_libraries>+: 
+    formatted = user.formatted_text(code_libraries_list, "NOOP")
+    insert("ssc uninstall ")
+    user.paste(formatted)
+
+s s c uninstall <user.code_libraries>+: 
+    formatted = user.formatted_text(code_libraries_list, "NOOP")
+    insert("ssc uninstall ")
+    user.paste(formatted)
 
 state for val: user.code_state_for()
 [state] foreach local: user.code_state_for_each_local()
@@ -50,10 +58,17 @@ quietly {user.code_common_function}:
     user.paste("qui ")
     user.code_insert_function(code_common_function, "")
 
+noisily {user.code_common_function}:
+    user.paste("noisily ")
+    user.code_insert_function(code_common_function, "")
+
 arg {user.code_parameter_name}: user.code_insert_named_argument(code_parameter_name)
 
 stata print variables: user.stata_print_variables()
-var {user.stata_variable_list}+: user.code_insert_stata_variables(stata_variable_list_list)
+var {user.stata_variable_list}+: 
+    formatted = user.formatted_text(stata_variable_list_list, "NOOP")
+    user.paste(formatted)
+    insert(" ")
 
 (sta | stata) quote: user.insert_between("`", "'")
 local var: user.paste("`var' ")

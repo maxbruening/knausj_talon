@@ -1,6 +1,13 @@
 list: user.code_common_function
 code.language: stata
 -
+# packages
+# estout
+estadd
+estout
+estpost
+eststo
+esttab
 # base stata
 C L S: cls
 see al s: cls
@@ -12,10 +19,13 @@ reg
 regress
 capture
 program drop
-# packages
-# estout
-estadd
-estout
-estpost
-eststo
-esttab
+program define
+sleep
+make directory: mkdir
+M K dir: mkdir
+end
+do
+log using
+log close
+set linesize
+net install
