@@ -26,9 +26,9 @@ code.language: /./
 
 ctx.lists["user.code_tag"] = {
     "functions": "stata_code_common_function.talon-list",
-    "libraries": "libraries",
-    "parameters": "parameter_names",
-    "variables": "variables",
+    "libraries": "stata_code_libraries.talon-list",
+    "parameters": "stata_code_parameter_names.talon-list",
+    "variables": "stata_code_variables.talon-list",
 }
 
 
@@ -36,7 +36,7 @@ ctx.lists["user.code_tag"] = {
 class Actions:
     def edit_code_list(code_tag: str):
         """Open respective file for editing"""
-        lang = actions.code.language()
-        path = os.path.join(REPO_DIR,lang,code_tag)
+        active_lang = actions.code.language()
+        path = os.path.join(REPO_DIR,"lang",active_lang,code_tag)
         print(path)
         os.startfile(path, "open")

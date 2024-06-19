@@ -3,15 +3,15 @@ code.language: /./
 -
 # At the ability to quickly add things to/edit the respective lists
 
-customize {user.populate}:
-    user.edit_code_list(populate)
+customize {user.code_tag}:
+    user.edit_code_list(code_tag)
     sleep(1500ms)
     edit.file_end()
     edit.line_insert_down()
 
-add {user.populate} this:
+add {user.code_tag} this:
     edit.copy()
-    user.edit_code_list(populate)
+    user.edit_code_list(code_tag)
     sleep(1500ms)
     edit.file_end()
     edit.line_insert_down()
