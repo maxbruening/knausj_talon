@@ -102,6 +102,10 @@ class UserActions:
         actions.key("ctrl-9")
         actions.sleep("300ms")
 
+        # Could modify the variable names before printing them. 
+        # For example separate words from numbers
+        # remove leading underscores, swap middle underscores with spaces etc.
+        # remove colons
         actions.user.paste(
             'file open f1 using "'+str(file_name)+'" ,write replace text\n\n'
             'file write f1 "list: user.stata_variable_list" _n ///\n'

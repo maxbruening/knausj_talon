@@ -20,13 +20,14 @@ settings():
 (toggle | tog) packages: user.code_toggle_libraries()
 
 ### more stata imperatives
-s s c install: user.code_import() # alternative to saying ""state import""
-s s c install <user.code_libraries>+: 
+# alternative to saying ""state import""
+s s c install: user.code_import()
+s s c install <user.code_libraries>+:
     formatted = user.formatted_text(code_libraries_list, "NOOP")
     insert("ssc uninstall ")
     user.paste(formatted)
 
-s s c uninstall <user.code_libraries>+: 
+s s c uninstall <user.code_libraries>+:
     formatted = user.formatted_text(code_libraries_list, "NOOP")
     insert("ssc uninstall ")
     user.paste(formatted)
@@ -41,15 +42,19 @@ state for val: user.code_state_for()
 ### Navigate in stata
 help {user.code_common_function}:
     user.stata_help(user.code_common_function)
-# opens the help for the function/command
 
 browse: user.stata_browse()
-# starts the data editor
+browse if [{user.stata_variable_list}]:
+    user.focus_stata_instance()
+    key(ctrl-1)
+    user.delete_all()
+    user.paste("browse if ")
+    user.paste("{stata_variable_list}" or "")
 
 do edit: user.stata_do_file_editor()
-# starts the do-file editor
 
 ### more snippets
+# functions followed by other functions
 capture {user.code_common_function}:
     user.paste("capture ")
     user.code_insert_function(code_common_function, "")
@@ -65,7 +70,7 @@ noisily {user.code_common_function}:
 arg {user.code_parameter_name}: user.code_insert_named_argument(code_parameter_name)
 
 stata print variables: user.stata_print_variables()
-var {user.stata_variable_list}+: 
+var {user.stata_variable_list}+:
     formatted = user.formatted_text(stata_variable_list_list, "NOOP")
     user.paste(formatted)
     insert(" ")
@@ -79,3 +84,10 @@ local <user.text> [then]:
 global <user.text> [then]:
     formatted = user.formatted_text(text, "SNAKE_CASE")
     user.paste("${{{formatted}}} ")
+
+scalar: user.paste("sca_")
+matrix: user.paste("mat_")
+
+display <user.text> [then]:
+    str = 'di "{text}"'
+    user.paste(str)

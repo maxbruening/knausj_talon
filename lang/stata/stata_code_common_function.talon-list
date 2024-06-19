@@ -9,23 +9,81 @@ estpost
 eststo
 esttab
 # base stata
+ado uninstall
+ado update
+append
+assert
+beep
+browse: br
+bysort: bys
 C L S: cls
-see al s: cls
+cap
+capture: cap
 clear
-sysuse
-global
-local
-reg
-regress
-capture
-program drop
-program define
-sleep
-make directory: mkdir
-M K dir: mkdir
-end
+clonevar
+compress
+count
 do
-log using
+drop
+duplicates report
+duplicates tag
+egen
+end
+file close
+file open
+file read
+file seek
+file write
+gen
+generate: gen
+global
+graph set
+hist
+keep
+keep
+label def
+label define: label def
+label language
+label val
+label values: label val
+label var
+label variable: label var
+list: li
+local
 log close
-set linesize
+log using
+M K dir: mkdir
+make directory: mkdir
+merge
 net install
+order
+program define
+program drop
+recode
+recode
+reg
+reg 2 H D F E: reg2hdfe
+regress
+rename
+replace
+sca def
+sca list: sca li
+scalar define: sca def
+scalar list: sca li
+see al s: cls
+set
+set linesize
+set more
+set scheme
+set type
+shell
+sleep
+su
+summarize: su
+sysuse
+tab
+tabulate: tab
+tempfile
+unique
+use
+X T set: xtset
