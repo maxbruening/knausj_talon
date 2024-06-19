@@ -3,13 +3,13 @@ code.language: stata
 -
 # base stata
 C L S: cls
-see al s:cls
+see al s: cls
 clear
 sysuse
 global
 local
 reg
-regres
+regress
 capture
 program drop
 # packages
