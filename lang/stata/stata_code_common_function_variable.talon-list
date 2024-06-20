@@ -1,6 +1,39 @@
 list: user.stata_code_common_function_variable
 code.language: stata
 -
-balancetable
 balance table: balancetable
-test
+balancetable
+browse: br
+clonevar
+codebook
+collapse
+connected
+correlate: corr
+drop
+duplicates report
+duplicates tag
+global
+hist
+histogram: hist
+K density: kdensity
+keep
+levelsof
+line
+list: li
+local
+order
+recode
+reg
+reg H D F E: reghdfe
+reg two H D F E: reg2hdfe
+regress
+rename
+replace
+scatter
+su
+summarize: su
+tab
+tabstat
+tabulate: tab
+tokenize
+unique

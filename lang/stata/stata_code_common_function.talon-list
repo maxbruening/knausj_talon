@@ -18,25 +18,17 @@ append
 assert
 bar
 beep
-browse: br
 bysort: bys
 C L S: cls
 cap
 capture: cap
 clear
-clonevar
-codebook
 coefplot
-collapse
+collect
 compress
-connected
-correlate: corr
 count
 display
 do
-drop
-duplicates report
-duplicates tag
 egen
 end
 erase
@@ -59,7 +51,6 @@ file seek
 file write
 gen
 generate: gen
-global
 graph export
 graph set
 graph style initialize: grstyle init
@@ -74,10 +65,6 @@ graph twoway scatter
 grstyle
 grstyle init
 grstyle set
-hist
-histogram: hist
-K density: kdensity
-keep
 label def
 label define: label def
 label language
@@ -85,10 +72,6 @@ label val
 label values: label val
 label var
 label variable: label var
-levelsof
-line
-list: li
-local
 log close
 log using
 M K dir: mkdir
@@ -106,21 +89,10 @@ matrix list: mat li
 matrix row names: matrix rownames
 merge
 net install
-order
 predict
 preserve
-preserve
-program define
 program define
 program drop
-recode
-recode
-reg
-reg two H D F E: reg2hdfe
-reg H D F E: reghdfe
-regress
-rename
-replace
 S J log close: sjlog close
 S J log using: sjlog using
 S J log: sjlog
@@ -129,7 +101,6 @@ sca def
 sca list: sca li
 scalar define: sca def
 scalar list: sca li
-scatter
 see al s: cls
 set
 set linesize
@@ -139,17 +110,9 @@ set scheme
 set type
 shell
 sleep
-su
-summarize: su
 sysuse
-tab
-tabstat
-tabulate: tab
 tempfile
 tempvar
-tokenize
-unique
 use
 window manage close graph
 X T set: xtset
-collect
