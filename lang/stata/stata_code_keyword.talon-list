@@ -1,0 +1,9 @@
+list: user.code_,keyword
+code.language: stata
+-
+Y lab: ylab
+Y scale: yscale
+Y tick: ytick
+X lab: xlab
+X scale: xscale
+X tick: xtick

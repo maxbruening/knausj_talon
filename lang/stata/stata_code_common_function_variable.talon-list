@@ -1,0 +1,6 @@
+list: user.stata_code_common_function_variable
+code.language: stata
+-
+balancetable
+balance table: balancetable
+test

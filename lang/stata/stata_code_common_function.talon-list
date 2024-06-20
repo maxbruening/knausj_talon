@@ -4,6 +4,9 @@ code.language: stata
 # packages
 # estout
 estadd
+estadd matrix
+estadd scalar
+estadd local
 estout
 estpost
 eststo
@@ -13,6 +16,7 @@ ado uninstall
 ado update
 append
 assert
+bar
 beep
 browse: br
 bysort: bys
@@ -21,14 +25,33 @@ cap
 capture: cap
 clear
 clonevar
+codebook
+coefplot
+collapse
 compress
+connected
+correlate: corr
 count
+display
 do
 drop
 duplicates report
 duplicates tag
 egen
 end
+erase
+est add: estadd
+est clear
+est drop
+est sto
+est use
+estimates
+estimates add: estadd
+estimates clear: est clear
+estimates drop: est drop
+estimates store: est sto
+estimates use: est use
+exit
 file close
 file open
 file read
@@ -37,9 +60,23 @@ file write
 gen
 generate: gen
 global
+graph export
 graph set
+graph style initialize: grstyle init
+graph style set: grstyle set
+graph twoway
+graph twoway bar
+graph twoway connected
+graph twoway histogram: graph twoway hist
+graph twoway K density: graph twoway kdensity
+graph twoway line
+graph twoway scatter
+grstyle
+grstyle init
+grstyle set
 hist
-keep
+histogram: hist
+K density: kdensity
 keep
 label def
 label define: label def
@@ -48,31 +85,55 @@ label val
 label values: label val
 label var
 label variable: label var
+levelsof
+line
 list: li
 local
 log close
 log using
 M K dir: mkdir
+M K mat: mkmat
 make directory: mkdir
+mat colnames
+mat def
+mat lee: mat li
+mat li
+mat list: mat li
+mat rownames
+matrix column names: mat colnames
+matrix define: mat def
+matrix list: mat li
+matrix row names: matrix rownames
 merge
 net install
 order
+predict
+preserve
+preserve
+program define
 program define
 program drop
 recode
 recode
 reg
 reg 2 H D F E: reg2hdfe
+reg H D F E: reghdfe
 regress
 rename
 replace
+S J log close: sjlog close
+S J log using: sjlog using
+S J log: sjlog
+S V mat: svmat
 sca def
 sca list: sca li
 scalar define: sca def
 scalar list: sca li
+scatter
 see al s: cls
 set
 set linesize
+set matsize
 set more
 set scheme
 set type
@@ -82,8 +143,13 @@ su
 summarize: su
 sysuse
 tab
+tabstat
 tabulate: tab
 tempfile
+tempvar
+tokenize
 unique
 use
+window manage close graph
 X T set: xtset
+collect

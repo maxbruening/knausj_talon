@@ -1,3 +1,4 @@
+# many of the things here could also be useful for working in R or python data science
 code.language: stata
 -
 tag(): user.code_imperative
@@ -54,6 +55,13 @@ browse if [{user.stata_variable_list}]:
 do edit: user.stata_do_file_editor()
 
 ### more snippets
+funk {user.stata_code_common_function_variable} {user.stata_variable_list}+:
+    user.code_insert_function(stata_code_common_function_variable, "")
+    formatted = user.formatted_text(stata_variable_list_list, "NOOP")
+    user.paste(formatted)
+    insert(" ")
+
+
 # functions followed by other functions
 capture {user.code_common_function}:
     user.paste("capture ")
@@ -75,15 +83,34 @@ var {user.stata_variable_list}+:
     user.paste(formatted)
     insert(" ")
 
-(sta | stata) quote: user.insert_between("`", "'")
-local var: user.paste("`var' ")
-local <user.text> [then]:
+
+(local | lock) quote: user.insert_between("`", "'")
+(global | glow) quote:
+    user.insert_between("${", "}")
+stata quote:
+    user.paste('`"')
+    user.paste('"')
+    user.paste("'")
+    key(left:2)
+
+(local | lock) string <user.text> [then]:
     formatted = user.formatted_text(text, "SNAKE_CASE")
     user.paste("`{formatted}' ")
+    
+# (lock | local) string <user.alphabet>:
+#     user.paste("`{alphabet}' ")
 
-global <user.text> [then]:
+(global | glow) string <user.text> [then]:
     formatted = user.formatted_text(text, "SNAKE_CASE")
     user.paste("${{{formatted}}} ")
+
+stata string <user.text> [then]:
+    formatted = user.formatted_text(text, "CAPITALIZE_FIRST_WORD")
+    user.paste('`"')
+    user.paste(formatted)
+    user.paste('"')
+    user.paste("'")
+
 
 scalar: user.paste("sca_")
 matrix: user.paste("mat_")

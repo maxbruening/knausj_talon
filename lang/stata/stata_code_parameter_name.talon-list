@@ -4,3 +4,5 @@ code.language: stata
 V C E cluster: vce(cluster)
 V C E robust: vce(robust)
 permanently
+upgrade
+replace

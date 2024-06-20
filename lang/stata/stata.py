@@ -7,6 +7,11 @@ ctx = Context()
 REPO_DIR = os.path.dirname(os.path.dirname(__file__))
 
 mod.list("stata_variable_list", "List of stata variables")
+mod.list(
+    "stata_code_common_function_variable",
+    "List of stata functions that take variables as input",
+)
+
 
 @mod.action_class
 class Actions:
@@ -76,13 +81,21 @@ ctx.matches = r"""
 code.language: stata
 """
 
+@ctx.capture(
+    "user.code_common_function",
+    rule="{user.code_common_function} | {user.stata_code_common_function_variable}",
+)
+def code_common_function(m) -> str:
+    return m.code_common_function
+
+
 @ctx.action_class("user")
 class UserActions:
     # Navigate in stata
     def stata_help(arg: str):
         actions.user.focus_stata_instance()
         actions.key("ctrl-1")
-        actions.auto_insert("help "+arg)
+        actions.auto_insert("help " + arg)
         actions.key("enter")
 
     def stata_browse():
@@ -102,22 +115,22 @@ class UserActions:
         actions.key("ctrl-9")
         actions.sleep("300ms")
 
-        # Could modify the variable names before printing them. 
+        # Could modify the variable names before printing them.
         # For example separate words from numbers
         # remove leading underscores, swap middle underscores with spaces etc.
         # remove colons
         actions.user.paste(
-            'file open f1 using "'+str(file_name)+'" ,write replace text\n\n'
+            'file open f1 using "' + str(file_name) + '" ,write replace text\n\n'
             'file write f1 "list: user.stata_variable_list" _n ///\n'
             '"code.language: stata" _n "-" _n\n\n'
-            'foreach var of varlist _all {\n'
-            '''\tlocal varlabel: variable label `var'\n'''
-            '''\tfile write f1 `"`var'"' _n\n'''
-            '''\tif "`varlabel'" != "" & "`varlabel'" != "`var'" {\n'''
-            '''\t\tfile write f1 `"`varlabel': `var'"' _n\n'''
-            '''\t}\n'''
-            '}\n\n'
-            'file close f1\n'
+            "foreach var of varlist _all {\n"
+            """\tlocal varlabel: variable label `var'\n"""
+            """\tfile write f1 `"`var'"' _n\n"""
+            """\tif "`varlabel'" != "" & "`varlabel'" != "`var'" {\n"""
+            """\t\tfile write f1 `"`varlabel': `var'"' _n\n"""
+            """\t}\n"""
+            "}\n\n"
+            "file close f1\n"
         )
 
         actions.key("ctrl-d")
@@ -130,7 +143,7 @@ class UserActions:
         actions.sleep("200ms")
         actions.user.switcher_focus_last()
 
-    # code_run tag        
+    # code_run tag
     def code_run_selection():
         actions.edit.copy()
         actions.user.stata_run_do_editor()
@@ -144,7 +157,7 @@ class UserActions:
         actions.edit.extend_line_end()
         actions.edit.copy()
         actions.user.stata_run_do_editor()
-        
+
     def code_run_line():
         actions.edit.select_line()
         actions.edit.copy()
