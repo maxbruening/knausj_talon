@@ -85,8 +85,8 @@ code.language: stata
     "user.code_common_function",
     rule="{user.code_common_function} | {user.stata_code_common_function_variable}",
 )
-# def code_common_function(m):
-#     return str(m)
+def code_common_function(m):
+    return str(m)
 
 
 @ctx.action_class("user")
@@ -201,7 +201,7 @@ class UserActions:
 
     # functions_common.py
     def code_insert_function(text: str, selection: str):
-        text += f" "
+        text += f" {selection or ''}"
         actions.user.paste(text)
 
     # imperative.py
