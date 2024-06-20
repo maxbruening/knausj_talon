@@ -1,4 +1,4 @@
-list: user.code_,keyword
+list: user.code_keyword
 code.language: stata
 -
 Y lab: ylab

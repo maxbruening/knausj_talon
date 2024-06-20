@@ -116,7 +116,7 @@ program drop
 recode
 recode
 reg
-reg 2 H D F E: reg2hdfe
+reg two H D F E: reg2hdfe
 reg H D F E: reghdfe
 regress
 rename

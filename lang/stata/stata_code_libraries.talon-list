@@ -10,7 +10,7 @@ tabout
 # colors
 blindschemes
 palettes
-scheme_tufte
+scheme tufte: scheme_tufte
 # misc
 unique
 grstyle
