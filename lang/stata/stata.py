@@ -107,41 +107,60 @@ class UserActions:
         actions.key("ctrl-9")
 
     def stata_print_variables():
-        actions.user.focus_stata_instance()
+        # Print stata variable names and labels to two different files
+        infile1 = os.path.join(REPO_DIR, "stata", "stata_code_variable_names")
+        infile2 = os.path.join(REPO_DIR, "stata", "stata_code_variable_labels")
+        outfile = os.path.join(REPO_DIR, "stata", "stata_code_variable.talon-list")
 
-        file_name = os.path.join(REPO_DIR, "stata", "stata_code_variables.talon-list")
-
-        actions.sleep("300ms")
-        actions.key("ctrl-9")
-        actions.sleep("300ms")
+        # actions.user.focus_stata_instance()
+        # actions.sleep("300ms")
+        # actions.key("ctrl-9")
+        # actions.sleep("300ms")
 
         # Could modify the variable names before printing them.
         # For example separate words from numbers
         # remove leading underscores, swap middle underscores with spaces etc.
         # remove colons
-        actions.user.paste(
-            'file open f1 using "' + str(file_name) + '" ,write replace text\n\n'
-            'file write f1 "list: user.stata_variable_list" _n ///\n'
-            '"code.language: stata" _n "-" _n\n\n'
-            "foreach var of varlist _all {\n"
-            """\tlocal varlabel: variable label `var'\n"""
-            """\tfile write f1 `"`var'"' _n\n"""
-            """\tif "`varlabel'" != "" & "`varlabel'" != "`var'" {\n"""
-            """\t\tfile write f1 `"`varlabel': `var'"' _n\n"""
-            """\t}\n"""
-            "}\n\n"
-            "file close f1\n"
+
+        # actions.user.paste(
+        #     '''file open f1 using `"''' + str(infile1) + '''.do"' ,write replace text\n'''
+        #     '''file open f2 using `"''' + str(infile2) + '''.do"' ,write replace text\n'''
+        #     '''\n'''
+        #     '''foreach var of varlist _all {\n'''
+        #     '''\tlocal varlabel: variable label `var'\n'''
+        #     '''\tfile write f1 `"`var'"' _n\n'''
+        #     '''\tfile write f2 `"`varlabel'"' _n\n'''
+        #     '''}\n'''
+        #     '''\n'''
+        #     '''file close f1\n'''
+        #     '''file close f2\n'''
+        # )
+        
+        # actions.key("ctrl-d")
+        # actions.user.delete_all()
+        # actions.app.window_close()
+        # actions.sleep("200ms")
+        # actions.edit.right()
+        # actions.sleep("200ms")
+        # actions.key("enter")
+        # actions.sleep("200ms")
+        # actions.user.switcher_focus_last()
+        # actions.sleep("1000ms")
+        
+        filepath = infile1 + ".do"
+        with open(filepath, "r") as f:
+            commands = f.readlines()
+
+        spoken_forms = actions.user.create_spoken_forms_from_list(
+            commands, generate_subsequences=False
         )
 
-        actions.key("ctrl-d")
-        actions.user.delete_all()
-        actions.app.window_close()
-        actions.sleep("200ms")
-        actions.edit.right()
-        actions.sleep("200ms")
-        actions.key("enter")
-        actions.sleep("200ms")
-        actions.user.switcher_focus_last()
+        with open(outfile,'w') as f:
+            f.write("list: stata_code_variable_list\n")
+            f.write("code: stata.language\n")
+            f.write("-\n")
+            for row in spoken_forms:
+                f.write(row + ": " + row + "\n")
 
     # code_run tag
     def code_run_selection():
