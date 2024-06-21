@@ -113,40 +113,39 @@ class UserActions:
         infile2 = os.path.join(REPO_DIR, "stata", "stata_code_variable_labels")
         outfile = os.path.join(REPO_DIR, "stata", "stata_code_variable.talon-list")
 
-        # actions.user.focus_stata_instance()
-        # actions.sleep("300ms")
-        # actions.key("ctrl-9")
-        # actions.sleep("300ms")
+        actions.user.focus_stata_instance()
+        actions.sleep("300ms")
+        actions.key("ctrl-9")
+        actions.sleep("300ms")
 
         # Could modify the variable names before printing them.
         # For example separate words from numbers
         # remove leading underscores, swap middle underscores with spaces etc.
         # remove colons
 
-        # actions.user.paste(
-        #     '''file open f1 using `"''' + str(infile1) + '''.do"' ,write replace text\n'''
-        #     '''file open f2 using `"''' + str(infile2) + '''.do"' ,write replace text\n'''
-        #     '''\n'''
-        #     '''foreach var of varlist _all {\n'''
-        #     '''\tlocal varlabel: variable label `var'\n'''
-        #     '''\tfile write f1 `"`var'"' _n\n'''
-        #     '''\tfile write f2 `"`varlabel'"' _n\n'''
-        #     '''}\n'''
-        #     '''\n'''
-        #     '''file close f1\n'''
-        #     '''file close f2\n'''
-        # )
+        actions.user.paste(
+            '''file open f1 using `"''' + str(infile1) + '''.do"' ,write replace text\n'''
+            '''file open f2 using `"''' + str(infile2) + '''.do"' ,write replace text\n'''
+            '''\n'''
+            '''foreach var of varlist _all {\n'''
+            '''\tlocal varlabel: variable label `var'\n'''
+            '''\tfile write f1 `"`var'"' _n\n'''
+            '''\tfile write f2 `"`varlabel'"' _n\n'''
+            '''}\n'''
+            '''\n'''
+            '''file close f1\n'''
+            '''file close f2\n'''
+        )
 
-        # actions.key("ctrl-d")
-        # actions.user.delete_all()
-        # actions.app.window_close()
-        # actions.sleep("200ms")
-        # actions.edit.right()
-        # actions.sleep("200ms")
-        # actions.key("enter")
-        # actions.sleep("200ms")
-        # actions.user.switcher_focus_last()
-        # actions.sleep("1000ms")
+        actions.key("ctrl-d")
+        actions.user.delete_all()
+        actions.app.window_close()
+        actions.sleep("200ms")
+        actions.edit.right()
+        actions.sleep("200ms")
+        actions.key("enter")
+        actions.sleep("200ms")
+        actions.user.switcher_focus_last()
 
         filepath = infile1 + ".do"
         with open(filepath, "r") as f:
@@ -178,7 +177,7 @@ class UserActions:
     def code_run_line_end():
         actions.edit.extend_line_end()
         actions.edit.copy()
-        actions.user.stata_run_do_editor()
+        # actions.user.stata_run_do_editor()
 
     def code_run_line():
         actions.edit.select_line()
