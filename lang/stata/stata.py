@@ -81,6 +81,7 @@ ctx.matches = r"""
 code.language: stata
 """
 
+
 @ctx.capture(
     "user.code_common_function",
     rule="{user.code_common_function} | {user.stata_code_common_function_variable}",
@@ -135,7 +136,7 @@ class UserActions:
         #     '''file close f1\n'''
         #     '''file close f2\n'''
         # )
-        
+
         # actions.key("ctrl-d")
         # actions.user.delete_all()
         # actions.app.window_close()
@@ -146,21 +147,23 @@ class UserActions:
         # actions.sleep("200ms")
         # actions.user.switcher_focus_last()
         # actions.sleep("1000ms")
-        
+
         filepath = infile1 + ".do"
         with open(filepath, "r") as f:
             commands = f.readlines()
 
-        spoken_forms = actions.user.create_spoken_forms_from_list(
+        result = actions.user.create_spoken_forms_from_list(
             commands, generate_subsequences=False
         )
 
-        with open(outfile,'w') as f:
+        print(result)
+
+        with open(outfile, "w") as f:
             f.write("list: stata_code_variable_list\n")
             f.write("code: stata.language\n")
             f.write("-\n")
-            for row in spoken_forms:
-                f.write(row + ": " + row + "\n")
+            for keys, values in result.items():
+                f.write(keys + ": " + values)
 
     # code_run tag
     def code_run_selection():
