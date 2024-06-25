@@ -306,6 +306,10 @@ class Actions:
         actions.user.clear_last_phrase()
         actions.user.insert_formatted(last_phrase, formatters)
 
+    def formatters_reformat_overwrite():
+        """Ensures that the selection will be overwritten."""
+        edit.delete()
+
     def formatters_reformat_selection(formatters: str) -> str:
         """Reformats the current selection."""
         selected = edit.selected_text()
@@ -316,7 +320,7 @@ class Actions:
             selected = unformat_text(selected)
         # Delete separately for compatibility with programs that don't overwrite
         # selected text (e.g. Emacs)
-        edit.delete()
+        actions.user.formatters_reformat_overwrite()
         text = actions.self.formatted_text(selected, formatters)
         actions.insert(text)
         return text
