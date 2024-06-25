@@ -90,3 +90,6 @@ class UserActions:
     #     if after.startswith("\r\n"):
     #         print("If there is a newline, I detect it.")
     #     return before, after
+
+    def formatters_reformat_overwrite():
+        pass
