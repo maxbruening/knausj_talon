@@ -8,6 +8,7 @@ from talon.grammar import Phrase
 
 # To change the phrase used to cancel commands, you must also adjust misc/cancel.talon
 cancel_phrase = "cancel cancel".split()
+cancel_phrase2 = "cancer cancer".split()
 
 mod = Module()
 ctx = Context()
@@ -57,7 +58,7 @@ def pre_phrase(phrase: Phrase):
     # Check if the phrase is a cancel command
     n = len(cancel_phrase)
     before, after = words[:-n], words[-n:]
-    if after == cancel_phrase:
+    if after == cancel_phrase | after == cancel_phrase2:
         actions.app.notify(f"Command canceled: {' '.join(before)!r}")
         cancel_entire_phrase(phrase)
         return
