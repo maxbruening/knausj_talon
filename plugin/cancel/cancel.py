@@ -58,7 +58,7 @@ def pre_phrase(phrase: Phrase):
     # Check if the phrase is a cancel command
     n = len(cancel_phrase)
     before, after = words[:-n], words[-n:]
-    if after == cancel_phrase | after == cancel_phrase2:
+    if after == cancel_phrase or after == cancel_phrase2:
         actions.app.notify(f"Command canceled: {' '.join(before)!r}")
         cancel_entire_phrase(phrase)
         return
